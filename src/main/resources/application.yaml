@@ -2,5 +2,13 @@ server:
     port: 8181
 
 feign:
+    httpclient:
+        disableSslValidation: true
+    client:
+      config:
+        default:
+          connectTimeout: 5000
+          readTimeout: 5000
+          loggerLevel: basic
     nominatim:
-        url: nominatim.openstreetmap.org
+        url: https://nominatim.openstreetmap.org
