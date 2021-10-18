@@ -38,6 +38,10 @@ public class DataCoordinatesConverter {
 		}
 		return null;
 	}
+	
+	public void getOpenWeatherEntityFromPlaceData() {
+		
+	}
 
 	public PlaceData featureToPlaceData(Features feature, PlaceData pData) {
 		Properties prop = feature.getProperties();

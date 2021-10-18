@@ -23,13 +23,13 @@ public class EntitiesTest {
 	private static final String PLACE = "rivarolo";
 
 	@Autowired
-	NominatimFeignClient client;
+	NominatimFeignClient nominatimClientFeign;
 	
 	@Autowired
 	DataCoordinatesConverter mapper;
 
 	public GeoCode createGeoCodeForTest() {
-		GeoCode gc = client.retrieveGeoCode("geocodejson", PLACE);
+		GeoCode gc = nominatimClientFeign.retrieveGeoCode("geocodejson", PLACE);
 		return gc;
 	}
 

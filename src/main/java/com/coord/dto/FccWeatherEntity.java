@@ -10,7 +10,7 @@ import lombok.Data;
 @Component
 @JsonIgnoreProperties
 @Data
-public class OpenWeatherEntity {
+public class FccWeatherEntity {
 
 	@JsonProperty(value = "name")
 	private String name;
