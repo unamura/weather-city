@@ -13,6 +13,7 @@ import lombok.Data;
 public class Geometry {
 
 	private String type;	
+	// 0 Long 1 Latit
 	private List<Double> coordinates;
 
 }

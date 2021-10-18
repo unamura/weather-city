@@ -15,7 +15,7 @@ import lombok.Data;
 public class GeoCode {
 	@JsonProperty("type")
 	private String type;
-	
 	private List<Features> features;
+	private String aInstructions;
 
 }

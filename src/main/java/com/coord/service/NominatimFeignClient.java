@@ -6,10 +6,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.coord.dto.GeoCode;
 
-@FeignClient(value = "openatim", url = "${feign.nominatim.url}")
+@FeignClient(value = "${feign.nominatim.name}", url = "${feign.nominatim.url}")
 public interface NominatimFeignClient {
 
 	@RequestMapping("/search")
-	public GeoCode retrieveGeoCode(@RequestParam String format, @RequestParam String city);
+	public GeoCode retrieveGeoCode(@RequestParam String format, 
+			@RequestParam String city);
 
 }

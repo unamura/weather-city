@@ -12,9 +12,3 @@ import lombok.Data;
 public class Properties {
 	private Geocoding geocoding;
 }
-
-@Data
-class Geocoding {
-	private String label;
-	private String name;
-}
