@@ -1,2 +1,4 @@
 .target/
 /target/
+application.yaml
+src/main/resources/application.yaml

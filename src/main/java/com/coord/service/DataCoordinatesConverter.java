@@ -3,8 +3,10 @@ package com.coord.service;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.coord.dto.FccWeatherEntity;
 import com.coord.dto.Features;
 import com.coord.dto.GeoCode;
 import com.coord.dto.Geometry;
@@ -13,6 +15,9 @@ import com.coord.dto.Properties;
 
 @Component
 public class DataCoordinatesConverter {
+	
+	@Autowired
+	FccWeatherFeignClient fccWeatherClientFeign;
 
 	public Map<Integer, PlaceData> geoCodeToPlaceData(GeoCode geoCode) {
 		Integer index = 1;
@@ -38,9 +43,12 @@ public class DataCoordinatesConverter {
 		}
 		return null;
 	}
-	
-	public void getOpenWeatherEntityFromPlaceData() {
-		
+
+	public FccWeatherEntity getFccWeatherEntityFromPlaceData(Double lon, Double lat) {
+		if(lon != null && lat != null) {
+			return fccWeatherClientFeign.retrieveWeatherInfoFromPlace(lat, lon);
+		}
+		return null;
 	}
 
 	public PlaceData featureToPlaceData(Features feature, PlaceData pData) {

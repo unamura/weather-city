@@ -16,3 +16,7 @@ feign:
     fccweather:
         name: fcc-weather
         url: https://fcc-weather-api.glitch.me/api
+    openweather:
+        name: openweather
+        url: http://api.openweathermap.org/data/2.5/
+        key: 

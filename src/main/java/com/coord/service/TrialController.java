@@ -16,8 +16,8 @@ public class TrialController {
 
 	@Autowired
 	private NominatimFeignClient nominatimClientFeign;
-	@Autowired
-	private FccWeatherFeignClient fccWeatherClientFeign;
+	//@Autowired
+	//private FccWeatherFeignClient fccWeatherClientFeign;
 	@Autowired
 	DataCoordinatesConverter mapper;
 	@Autowired
@@ -49,7 +49,11 @@ public class TrialController {
 
 	@RequestMapping("/weath")
 	public FccWeatherEntity getOpenWeather() {
-		FccWeatherEntity owe = fccWeatherClientFeign.retrieveWeatherInfoFromPlace("44.3036653", "9.2093446");
+		Double lon = placeData.getPlaceLongitude();
+		Double lat = placeData.getPlaceLatitude();
+		
+		FccWeatherEntity owe = mapper.getFccWeatherEntityFromPlaceData(lon, lat);
+		//FccWeatherEntity owe = fccWeatherClientFeign.retrieveWeatherInfoFromPlace(44.3036653, 9.2093446);
 
 		return owe;
 	}
