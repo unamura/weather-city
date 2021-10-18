@@ -24,31 +24,29 @@ public class TrialController {
 
 	@Autowired
 	DataCoordinatesConverter mapper;
+	
+	@Autowired
+	Map<Integer, PlaceData> placeMap;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String welcome() {
 		return "Welcome to weather app";
 	}
 
-	@RequestMapping("/geo/{city}")
-	public GeoCode getFromNominatim(@PathVariable(required = true) String city) {
-		log.info("Initializing getFromGoogle method");
-		String url = "https://nominatim.openstreetmap.org/search?format=geocodejson&city=" + city;
-		RestTemplate rt = new RestTemplate();
-		GeoCode gc = rt.getForObject(url, GeoCode.class);
-		String ins = "Per scegliere una città andare alla URL .../id \n Dove id è il numero della città scelta.";
-		gc.setAInstructions(ins);
-
-		return gc;
-	}
-
 	@RequestMapping("/geo")
-	public Map<Integer, PlaceData> getFromNominatimFeign(
+	public Map<Integer, PlaceData> getNominatimToPlaceData(
 			@RequestParam(required = false, defaultValue = "Genova") String city) {
 		GeoCode gc = clientFeign.retrieveGeoCode("geocodejson", city);
-		Map<Integer, PlaceData> placeList = mapper.geoCodeToPlaceData(gc);
+		placeMap = mapper.geoCodeToPlaceData(gc);
 
-		return placeList;
+		return placeMap;
 	}
 
+	@RequestMapping("/geo/map")
+	public PlaceData getPlaceList(@RequestParam Integer key) {
+		PlaceData pd = mapper.getOnePlaceDataFromKey(key, placeMap);
+
+		return pd;
+	}
+	
 }

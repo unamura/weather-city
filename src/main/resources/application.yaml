@@ -15,4 +15,5 @@ feign:
         url: https://nominatim.openstreetmap.org
     openweather:
         name: openweather
+        url: http://api.openweathermap.org/data/2.5
         key: f4b84caaa15a14077daa494326b1163e

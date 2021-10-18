@@ -31,6 +31,14 @@ public class DataCoordinatesConverter {
 		return placeList;
 	}
 	
+	public PlaceData getOnePlaceDataFromKey(Integer key, Map<Integer, PlaceData> placeMap) {
+		Integer size = placeMap.size();
+		if(key != null && key <= size && key > 0) {
+			return placeMap.get(key);
+		}
+		return null;
+	}
+
 	public PlaceData featureToPlaceData(Features feature, PlaceData pData) {
 		Properties prop = feature.getProperties();
 		Geometry geom = feature.getGeometry();
