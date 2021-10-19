@@ -15,8 +15,8 @@ The app simply works by retrieving places and weather data using the online free
 As of now is missing the `src/main/resources/application.yaml` file. Which contains all the data used by the Open Feign client.
 
 ### Steps
--[x] Retrieve a place by the name
--[ ] Visualize important weather data for the place written
--[ ] Creating an API
--[ ] Add a front end part
--[ ] Making available the application.yaml
+- [x] Retrieve a place by the name
+- [ ] Visualize important weather data for the place written
+- [ ] Creating an API
+- [ ] Add a front end part
+- [ ] Making available the application.yaml
