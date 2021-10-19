@@ -12,7 +12,7 @@ The app simply works by retrieving places and weather data using the online free
   - However it seems to not work always correctly
   
 ## What is missing?
-As of now is missing the `src/main/resources/application.yaml` file. Which contains all the data used by the Open Feign client.
+As of now is missing the `src/main/resources/application.yaml` file. Which contains all the data used by the Open Feign client. MOre important the api key for the Open Weather API is written inside this file.
 
 ### Steps
 - [x] Retrieve a place by the name

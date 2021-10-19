@@ -7,18 +7,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import com.coord.dto.GeoCode;
-import com.coord.dto.OpenWeatherEntity;
-import com.coord.dto.FccWeatherEntity;
+
 import com.coord.dto.PlaceData;
+import com.coord.dto.DisplayPlaceData;
+import com.coord.dto.nominatim.GeoCode;
+import com.coord.dto.openweather.OpenWeatherEntity;
 
 @RestController
 public class TrialController {
 
 	@Autowired
 	private NominatimFeignClient nominatimClientFeign;
-	//@Autowired
-	//private FccWeatherFeignClient fccWeatherClientFeign;
 	@Autowired
 	DataCoordinatesConverter mapper;
 	@Autowired
@@ -49,12 +48,14 @@ public class TrialController {
 	}
 
 	@RequestMapping("/geo/map/weather")
-	public OpenWeatherEntity getOpenWeather() {
+	public DisplayPlaceData getOpenWeather() {
 		Double lon = placeData.getPlaceLongitude();
 		Double lat = placeData.getPlaceLatitude();		
 		OpenWeatherEntity owe = mapper.getOpenWeatherEntityFromPlaceData(lon, lat);
+		DisplayPlaceData wd = new DisplayPlaceData();
+		mapper.openWeatherToDisplayDataMapper(owe, wd);
 
-		return owe;
+		return wd;
 	}
 
 }

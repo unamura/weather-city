@@ -1,6 +1,4 @@
-package com.coord.dto;
-
-import java.util.List;
+package com.coord.dto.openweather;
 
 import org.springframework.stereotype.Component;
 
@@ -12,10 +10,9 @@ import lombok.Data;
 @Component
 @Data
 @JsonIgnoreProperties
-public class GeoCode {
-	@JsonProperty("type")
-	private String type;
-	private List<Features> features;
-	private String aInstructions;
-
+public class Coord {
+	@JsonProperty("lon")
+	private Double lon;
+	@JsonProperty("lat")
+	private Double lat;
 }

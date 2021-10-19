@@ -1,4 +1,4 @@
-package com.coord.dto;
+package com.coord.dto.fccweather;
 
 import org.springframework.stereotype.Component;
 

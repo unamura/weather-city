@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Component
 @Data
-public class Geocoding {
-	private String label;
-	private String name;
+public class PlaceWeather {
+	private String weatherType;
+	private String weatherCondition;
 }
