@@ -4,20 +4,24 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import com.coord.dto.FccWeatherEntity;
 import com.coord.dto.Features;
 import com.coord.dto.GeoCode;
 import com.coord.dto.Geometry;
+import com.coord.dto.OpenWeatherEntity;
 import com.coord.dto.PlaceData;
 import com.coord.dto.Properties;
 
 @Component
 public class DataCoordinatesConverter {
-	
+
+	@Value("${feign.openweather.key}")
+	private String OPEN_WEATHER_API_KEY;
+
 	@Autowired
-	FccWeatherFeignClient fccWeatherClientFeign;
+	OpenWeatherFeignClient openWeatherClientFeign;
 
 	public Map<Integer, PlaceData> geoCodeToPlaceData(GeoCode geoCode) {
 		Integer index = 1;
@@ -44,9 +48,9 @@ public class DataCoordinatesConverter {
 		return null;
 	}
 
-	public FccWeatherEntity getFccWeatherEntityFromPlaceData(Double lon, Double lat) {
+	public OpenWeatherEntity getOpenWeatherEntityFromPlaceData(Double lon, Double lat) {
 		if(lon != null && lat != null) {
-			return fccWeatherClientFeign.retrieveWeatherInfoFromPlace(lat, lon);
+			return openWeatherClientFeign.retrieveWeatherInfoFromPlace(lat, lon, OPEN_WEATHER_API_KEY);
 		}
 		return null;
 	}

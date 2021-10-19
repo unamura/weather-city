@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.coord.dto.GeoCode;
+import com.coord.dto.OpenWeatherEntity;
 import com.coord.dto.FccWeatherEntity;
 import com.coord.dto.PlaceData;
 
@@ -47,13 +48,11 @@ public class TrialController {
 		return placeData;
 	}
 
-	@RequestMapping("/weath")
-	public FccWeatherEntity getOpenWeather() {
+	@RequestMapping("/geo/map/weather")
+	public OpenWeatherEntity getOpenWeather() {
 		Double lon = placeData.getPlaceLongitude();
-		Double lat = placeData.getPlaceLatitude();
-		
-		FccWeatherEntity owe = mapper.getFccWeatherEntityFromPlaceData(lon, lat);
-		//FccWeatherEntity owe = fccWeatherClientFeign.retrieveWeatherInfoFromPlace(44.3036653, 9.2093446);
+		Double lat = placeData.getPlaceLatitude();		
+		OpenWeatherEntity owe = mapper.getOpenWeatherEntityFromPlaceData(lon, lat);
 
 		return owe;
 	}
