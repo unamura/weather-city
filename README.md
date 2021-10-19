@@ -10,3 +10,13 @@ The app simply works by retrieving places and weather data using the online free
 - The Open Weather API does need an api key to be able to retrieve weather information (api key not given at the current time)
 - Alternatively it is possible to use the [FccWeather](https://fcc-weather-api.glitch.me/) API which does not required any registration and api key
   - However it seems to not work always correctly
+  
+## What is missing?
+As of now is missing the `src/main/resources/application.yaml` file. Which contains all the data used by the Open Feign client.
+
+### Steps
+-[x] Retrieve a place by the name
+-[ ] Visualize important weather data for the place written
+-[ ] Creating an API
+-[ ] Add a front end part
+-[ ] Making available the application.yaml
