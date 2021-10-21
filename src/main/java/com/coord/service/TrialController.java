@@ -3,6 +3,7 @@ package com.coord.service;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,6 +14,7 @@ import com.coord.dto.DisplayPlaceData;
 import com.coord.dto.nominatim.GeoCode;
 import com.coord.dto.openweather.OpenWeatherEntity;
 
+@CrossOrigin
 @RestController
 public class TrialController {
 
@@ -40,6 +42,7 @@ public class TrialController {
 		return placeMap;
 	}
 
+	//@CrossOrigin
 	@RequestMapping("/geo/map")
 	public PlaceData getPlaceList(@RequestParam Integer key) {
 		placeData = mapper.getOnePlaceDataFromKey(key, placeMap);
