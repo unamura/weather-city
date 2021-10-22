@@ -19,8 +19,13 @@ COPY mvn-entrypoint.sh /usr/local/bin/mvn-entrypoint.sh
 COPY settings-docker.xml /usr/share/maven/ref/
 
 ENTRYPOINT ["/usr/local/bin/mvn-entrypoint.sh"]
-CMD ["mvn"]
+#CMD ["mvn"]
 
 COPY src /usr/app/src/
 COPY pom.xml /usr/app
 RUN mvn -f /usr/app/pom.xml clean package
+
+#COPY /usr/app/target/weather-from-city-0.1.0.jar app.jar
+WORKDIR /usr/app/target
+
+CMD ["java","-jar","weather-from-city-0.1.0.jar"]
