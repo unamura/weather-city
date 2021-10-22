@@ -14,12 +14,14 @@ The app simply works by retrieving places and weather data using the online free
 ## What is missing?
 As of now is missing the `src/main/resources/application.yaml` file. Which contains all the data used by the Open Feign client. More important the api key for the Open Weather API is written inside this file.
 
-To run the project is also necessary to install Lombok, used to make the code more light. However I intend to add a Dockerfile to run the app.
+### Docker
+I added a Dockerfile to build an image to build a container that allows to run
+ the app without installing java or other tools. The image first install mvn and
+ then compile the package inside the container to run it later.
 
 ### Steps
 - [x] Retrieve a place by the name
 - [x] Visualize important weather data for the place written
 - [ ] Creating an API
-- [ ] Add a front end Angular project
-- [ ] Add a Dockerfile to build a Docker image
+- [x] Add a Dockerfile to build a Docker image
 - [ ] Making available the application.yml
